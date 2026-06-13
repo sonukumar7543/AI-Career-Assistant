@@ -1,40 +1,31 @@
-# # Import parser function
-# from src.parser import parse_resume
-
-# # Import json module
-# import json
+import json
+from src.resume_builder import build_resume
 
 
-# # Path of resume file
-# pdf_path = "resumes/test_resume.pdf"
+def main():
+    #Main function to run the Resume Parser.
 
-# # Parse resume
-# resume_data = parse_resume(pdf_path)
+    # Resume file path
+    pdf_path = "resumes/test_resume.pdf"
 
-# # Print extracted information
-# print("\n===== Resume Information =====")
-# print(resume_data)
+    # Build structured resume
+    resume = build_resume(pdf_path)
 
-# # Save output as JSON
-# with open("outputs/resume.json", "w") as file:
+    # Print structured resume
+    print("\n===== Structured Resume =====\n")
+    print(json.dumps(resume, indent=4))
 
-#     json.dump(
-#         resume_data,
-#         file,
-#         indent=4
-#     )
+    # Save output as JSON
+    with open("outputs/resume.json", "w") as file:
+        json.dump(
+            resume,
+            file,
+            indent=4
+        )
 
-# print("\nResume parsed successfully!")
-# print("Output saved in outputs/resume.json")
+    print("\n Resume saved successfully!")
 
-from src.parser import extract_text
-from src.section_parser import extract_sections
-from src.education_extractor import extract_education
 
-text = extract_text("resumes/test_resume.pdf")
-
-sections = extract_sections(text)
-
-education = extract_education(sections)
-
-print(education)
+# Run application
+if __name__ == "__main__":
+    main()
