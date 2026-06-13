@@ -1,0 +1,8 @@
+SECTION_HEADINGS = [
+    "SUMMARY",
+    "EDUCATION",
+    "SKILLS",
+    "PROJECTS",
+    "EXPERIENCE",
+    "CERTIFICATIONS"
+]
