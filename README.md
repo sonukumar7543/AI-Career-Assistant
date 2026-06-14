@@ -68,3 +68,71 @@
     }
 }
 ```
+
+
+## Week 3 Progress
+
+### Resume Scoring Engine
+
+Compare resume skills against job requirements and calculate a match score.
+
+Example:
+
+```json
+{
+    "score": 60.0,
+    "matched_skills": [
+        "Python",
+        "SQL",
+        "Machine Learning"
+    ],
+    "missing_skills": [
+        "TensorFlow",
+        "PyTorch"
+    ]
+}
+```
+
+### Job Description Parsing
+
+Extract required skills directly from job descriptions.
+
+### Skill Gap Analysis
+
+Identify missing skills needed for a target role.
+
+### Learning Recommendations
+
+Recommend learning resources based on missing skills.
+
+Example:
+
+* TensorFlow -> Official TensorFlow Tutorials
+* PyTorch -> PyTorch Learn
+
+### Report Generation
+
+Generate a complete career analysis report containing:
+
+* Resume Score
+* Matched Skills
+* Missing Skills
+* Learning Recommendations
+
+### Current Pipeline
+
+Resume PDF
+↓
+Resume Parser
+↓
+Structured Resume
+↓
+Job Description Parser
+↓
+Resume Scorer
+↓
+Skill Gap Analysis
+↓
+Learning Recommendations
+↓
+Career Report
