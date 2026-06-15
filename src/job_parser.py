@@ -13,3 +13,15 @@ def parse_job_description(file_path):
         "text": text,
         "skills": skills
     }
+
+
+def parse_job_text(text):
+    
+    # Parse job description text.
+
+    skills = extract_skills(text)
+
+    return {
+        "text": text,
+        "skills": skills
+    }

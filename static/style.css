@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    width: 600px;
+    margin: auto;
+}
+
+textarea {
+    width: 100%;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+}

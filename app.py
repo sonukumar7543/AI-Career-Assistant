@@ -26,23 +26,14 @@ def main():
         "job_descriptions/ml_engineer.txt"
     )
 
-    # Score Resume
-    result = score_resume(
-        resume["skills"],
-        job["skills"]
-    )
+    
+    result = score_resume(resume["skills"],job["skills"])
 
     # Generate Recommendations
-    recommendations = recommend_skills(
-        result["missing_skills"]
-    )
+    recommendations = recommend_skills(result["missing_skills"])
 
     # Generate Report
-    report = generate_report(
-        resume,
-        result,
-        recommendations
-    )
+    report = generate_report(resume,result,recommendations)
 
     # Display Report
     print(report)
@@ -54,11 +45,7 @@ def main():
         encoding="utf-8"
     ) as file:
 
-        json.dump(
-            resume,
-            file,
-            indent=4
-        )
+        json.dump(resume,file,indent=4)
 
     # Save Report
     with open(

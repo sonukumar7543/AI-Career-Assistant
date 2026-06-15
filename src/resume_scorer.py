@@ -24,7 +24,13 @@ def score_resume(
         else:
 
             missing_skills.append(skill)
-
+    # Score Resume
+    if len(required_skills) == 0:
+        return {
+            "score": 0,
+            "matched_skills": [],
+            "missing_skills": []
+        }
     score = (
         len(matched_skills)
         / len(required_skills)

@@ -136,3 +136,137 @@ Skill Gap Analysis
 Learning Recommendations
 ↓
 Career Report
+
+
+
+# Week 4 - FastAPI Backend & Web Interface
+
+## Overview
+
+In Week 4, the AI Career Assistant was transformed from a command-line application into a web application using FastAPI and Jinja2 templates.
+
+Users can now upload a resume, provide a job description, and receive an automated career analysis directly from a web browser.
+
+---
+
+## Features Implemented
+
+### 1. FastAPI Backend
+
+Created a FastAPI server to expose the project functionality through REST APIs.
+
+Endpoints:
+
+* `GET /`
+* `POST /parse-resume`
+* `POST /analyze-resume`
+
+---
+
+### 2. Resume Upload API
+
+Users can upload a PDF resume.
+
+The API:
+
+* Saves the uploaded file
+* Parses resume content
+* Extracts structured information
+
+
+### 3. Resume Analysis API
+
+Users can submit:
+
+* Resume PDF
+* Job Description
+
+The system:
+
+* Extracts resume skills
+* Extracts required job skills
+* Calculates ATS-style score
+* Identifies missing skills
+* Generates learning recommendations
+
+
+### 4. Pydantic Models
+
+Implemented Pydantic response models for:
+
+* Data validation
+* Type checking
+* Better API documentation
+
+
+### 5. Jinja2 Templates
+
+Added server-side rendered HTML pages.
+
+### 6. Frontend Integration
+
+Built a basic web interface where users can:
+
+1. Upload Resume
+2. Paste Job Description
+3. Click Analyze Resume
+4. View Analysis Results
+
+
+### 7. Results Page
+
+Displays:
+
+* Candidate Name
+* Resume Score
+* Matched Skills
+* Missing Skills
+* Learning Recommendations
+
+---
+
+### 8. CSS Styling
+
+Added custom styling using:
+
+Improvements:
+
+* Better spacing
+* Improved readability
+* Cleaner layout
+
+
+## Current Architecture
+
+```text
+User
+  ↓
+Web Interface
+  ↓
+FastAPI Backend
+  ↓
+Resume Parser
+  ↓
+Job Description Parser
+  ↓
+Resume Scorer
+  ↓
+Recommendation Engine
+  ↓
+Results Page
+```
+
+---
+
+## Technologies Used
+
+* Python
+* FastAPI
+* Jinja2
+* HTML
+* CSS
+* Pydantic
+* spaCy
+* PyPDF2
+
+---
