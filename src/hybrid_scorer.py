@@ -18,31 +18,20 @@ def hybrid_score(
         for resume_skill in resume_skills:
 
             # Exact Match
-            if (
-                resume_skill.lower()
-                ==
-                required_skill.lower()
-            ):
+            if (resume_skill.lower()==required_skill.lower()):
 
-                matched_skills.append(
-                    required_skill
-                )
+                matched_skills.append(required_skill)
 
                 found = True
 
                 break
 
             # Semantic Match
-            score = similarity_score(
-                resume_skill,
-                required_skill
-            )
+            score = similarity_score(resume_skill,required_skill)
 
             if score >= threshold:
 
-                matched_skills.append(
-                    required_skill
-                )
+                matched_skills.append(required_skill)
 
                 found = True
 
@@ -50,9 +39,7 @@ def hybrid_score(
 
         if not found:
 
-            missing_skills.append(
-                required_skill
-            )
+            missing_skills.append(required_skill)
 
     if len(required_skills) == 0:
 
@@ -62,11 +49,7 @@ def hybrid_score(
             "missing_skills": []
         }
 
-    score = (
-        len(matched_skills)
-        /
-        len(required_skills)
-    ) * 100
+    score = (len(matched_skills)/len(required_skills)) * 100
 
     return {
         "score": round(score, 2),
