@@ -1,22 +1,102 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 40px;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
 }
 
 h1 {
     text-align: center;
 }
 
-form {
-    width: 600px;
-    margin: auto;
+h2 {
+    color: #333;
 }
 
-textarea {
-    width: 100%;
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input,textarea {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 button {
-    padding: 10px 20px;
+    padding: 12px;
+    font-size: 16px;
     cursor: pointer;
 }
+
+
+.score-card {
+    text-align: center;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+.score-card h1 {
+    font-size: 50px;
+    margin: 0;
+}
+
+.score-card h2 {
+    margin-bottom: 10px;
+}
+
+.matched-skill {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.missing-skill {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.recommendation-card {
+    background: #f8f9fa;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+
+.high-score {
+    background-color: #d4edda;
+}
+
+.medium-score {
+    background-color: #fff3cd;
+}
+
+.low-score {
+    background-color: #f8d7da;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+}
+
+

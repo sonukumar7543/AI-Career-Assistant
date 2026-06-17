@@ -7,29 +7,34 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1>AI Career Assistant</h1>
+    <div class="container">
 
-    <h3>Resume Analyzer</h3>
+        <h1>AI Career Assistant</h1>
 
-    <form action="/analyze-resume" method="post" enctype="multipart/form-data">
+        <h2>Resume Analyzer</h2>
 
-        <label>Resume PDF</label>
-        <br><br>
+        <form action="/analyze-resume" method="post" enctype="multipart/form-data">   
+            <label>Upload Resume</label>
 
-        <input type="file" name="file">
+            <input
+                type="file"
+                name="file"
+                required
+            >
 
-        <br><br>
+            <label> Job Description</label>
 
-        <label>Job Description</label>
+            <textarea
+                name="job_description"
+                rows="10"
+                required
+            ></textarea>
 
-        <br><br>
-
-        <textarea name="job_description" rows="10" cols="50"></textarea>
-
-        <br><br>
-
-        <button>Analyze Resume</button>
-
-    </form>
+            <button type="submit"> Analyze Resume </button>
+            <a href="/web" class="back-button">
+                Analyze Another Resume
+            </a>
+        </form>
+    </div>
 </body>
 </html>

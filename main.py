@@ -125,12 +125,23 @@ async def analyze_resume(
         result["missing_skills"]
     )
 
+    score = result["score"]
+
+    if score >= 80:
+        score_class = "high-score"
+
+    elif score >= 50:
+        score_class = "medium-score"
+
+    else:
+        score_class = "low-score"
     return templates.TemplateResponse(
         request=request,
         name="result.html",
         context={
             "candidate": resume["name"],
             "score": result["score"],
+            "score_class": score_class,
             "matched_skills":
                 result["matched_skills"],
             "missing_skills":

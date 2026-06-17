@@ -8,44 +8,68 @@
 </head>
 <body>
 
-    <h1>AI Career Assistant</h1>
+    <div class="container">
+        <h1>AI Career Assistant</h1>
 
-    <hr>
+        <hr>
 
-    <h2>Candidate: {{ candidate }}</h2>
+        <h2>Candidate: {{ candidate }}</h2>
 
-    <h3>Resume Score: {{ score }}%</h3>
+        <div class="score-card {{ score_class }}">
 
-    <hr>
+            <h2>Resume Score</h2>
 
-    <h2>Matched Skills</h2>
+            <h1>{{ score }}%</h1>
 
-    <ul>
-        {% for skill in matched_skills %}
-        <li>✓ {{ skill }}</li>
-        {% endfor %}
-    </ul>
+        </div>
 
-    <h2>Missing Skills</h2>
+        <hr>
 
-    <ul>
-        {% for skill in missing_skills %}
-        <li>✗ {{ skill }}</li>
-        {% endfor %}
-    </ul>
+        <h2>Matched Skills</h2>
 
-    <h2>Recommendations</h2>
+        <ul>
+            {% for skill in matched_skills %}
+            <li class="matched-skill">
+                ✓ {{ skill }}
+            </li>
+            {% endfor %}
+        </ul>
 
-    <ul>
+        <h2>Missing Skills</h2>
+
+        <ul>
+            {% for skill in missing_skills %}
+            <li class="missing-skill">
+                ✗ {{ skill }}
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h2>Recommendations</h2>
+
         {% for skill, details in recommendations.items() %}
-        <li>
-            <b>{{ skill }}</b><br>
-            Difficulty: {{ details.difficulty }}<br>
-            Resource: {{ details.resource }}
-        </li>
-        <br>
+
+        <div class="recommendation-card">
+
+            <h3>{{ skill }}</h3>
+
+            <p>
+                Difficulty:
+                {{ details.difficulty }}
+            </p>
+
+            <p>
+                Resource:
+                {{ details.resource }}
+            </p>
+
+        </div>
+
         {% endfor %}
-    </ul>
+        <a href="/web" class="back-button">
+            Analyze Another Resume
+        </a>
+    </div>
 
 </body>
 
