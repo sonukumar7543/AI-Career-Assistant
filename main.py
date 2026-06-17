@@ -1,16 +1,12 @@
 from fastapi import FastAPI, UploadFile, File
 from fastapi import Form
-from requests import request
 
 from src.job_parser import parse_job_text
-from src.resume_scorer import score_resume
 from src.recommender import recommend_skills
-from src.models import AnalysisResponse
 import shutil
 import os
 
 from src.resume_builder import build_resume
-from src.skill_extractor import extract_skills
 
 
 from fastapi.templating import Jinja2Templates
@@ -18,6 +14,7 @@ from fastapi.requests import Request
 from fastapi.responses import HTMLResponse
 
 from fastapi.staticfiles import StaticFiles
+from src.ai_scorer import calculate_ai_score
 
 app = FastAPI(
     title="AI Career Assistant",
@@ -116,16 +113,18 @@ async def analyze_resume(
         job_description
     )
 
-    result = score_resume(
+    ai_result = calculate_ai_score(
         resume["skills"],
-        job["skills"]
+        job["skills"],
+        str(resume),
+        job_description
     )
 
     recommendations = recommend_skills(
-        result["missing_skills"]
+        ai_result["missing_skills"]
     )
 
-    score = result["score"]
+    score = ai_result["final_score"]
 
     if score >= 80:
         score_class = "high-score"
@@ -135,19 +134,19 @@ async def analyze_resume(
 
     else:
         score_class = "low-score"
+
     return templates.TemplateResponse(
         request=request,
         name="result.html",
         context={
             "candidate": resume["name"],
-            "score": result["score"],
+            "score": ai_result["final_score"],
+            "skill_score": ai_result["skill_score"],
+            "semantic_score": ai_result["semantic_score"],
             "score_class": score_class,
-            "matched_skills":
-                result["matched_skills"],
-            "missing_skills":
-                result["missing_skills"],
-            "recommendations":
-                recommendations
+            "matched_skills": ai_result["matched_skills"],
+            "missing_skills": ai_result["missing_skills"],
+            "recommendations": recommendations
         }
     )
     

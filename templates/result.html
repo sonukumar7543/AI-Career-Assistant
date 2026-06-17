@@ -16,12 +16,21 @@
         <h2>Candidate: {{ candidate }}</h2>
 
         <div class="score-card {{ score_class }}">
-
+            
             <h2>Resume Score</h2>
-
+            
             <h1>{{ score }}%</h1>
-
+            
         </div>
+        <h3>
+            Skill Match Score:
+            {{ skill_score }}%
+        </h3>
+
+        <h3>
+            Semantic Score:
+            {{ semantic_score }}%
+        </h3>
 
         <hr>
 

@@ -279,3 +279,302 @@ Results Page
 During Week 5, the AI Career Assistant was transformed from a basic web interface into a more professional and user-friendly application.
 
 The focus of this week was improving the user experience (UX), interface design (UI), and presentation of analysis results.
+
+
+
+# Week 6 - AI-Powered Semantic Resume Matching
+
+## Overview
+
+Week 6 introduced the first real Artificial Intelligence and Natural Language Processing (NLP) components into the AI Career Assistant.
+
+The project evolved from simple keyword matching to semantic understanding using Sentence Transformers, text embeddings, and cosine similarity.
+
+This allows the system to understand relationships between skills and concepts even when the exact words do not match.
+
+---
+
+## Objectives
+
+* Introduce Machine Learning into the project
+* Implement semantic skill matching
+* Compare resumes and job descriptions using embeddings
+* Generate AI-powered resume scores
+* Improve matching accuracy beyond keyword search
+
+---
+
+## Features Implemented
+
+### 1. Sentence Transformers Integration
+
+Installed and configured:
+
+* Sentence Transformers
+* PyTorch
+
+Model Used:
+
+```text
+all-MiniLM-L6-v2
+```
+
+Purpose:
+
+* Convert text into vector embeddings
+* Capture semantic meaning of words and sentences
+
+---
+
+### 2. Semantic Similarity Engine
+
+Created:
+
+```text
+src/semantic_matcher.py
+```
+
+Functionality:
+
+```python
+similarity_score(text1, text2)
+```
+
+Uses:
+
+* Sentence Embeddings
+* Cosine Similarity
+
+Example:
+
+```text
+Deep Learning
+≈
+Neural Networks
+```
+
+The model recognizes that both concepts are strongly related.
+
+---
+
+### 3. Semantic Skill Matching
+
+Created:
+
+```text
+src/semantic_scorer.py
+```
+
+Features:
+
+* Compares resume skills with job skills
+* Uses similarity thresholds
+* Detects related skills even when wording differs
+
+Example:
+
+```text
+Resume:
+Deep Learning
+
+Job:
+Neural Networks
+
+Result:
+Match Detected
+```
+
+---
+
+### 4. Hybrid Scoring System
+
+Created:
+
+```text
+src/hybrid_scorer.py
+```
+
+Combines:
+
+```text
+Exact Matching
++
+Semantic Matching
+```
+
+Workflow:
+
+```text
+Skill
+  ↓
+Exact Match?
+  ↓
+Yes → Match
+  ↓
+No
+  ↓
+Semantic Similarity Check
+```
+
+Benefits:
+
+* Faster than pure semantic matching
+* More accurate than keyword matching
+* Better real-world performance
+
+---
+
+### 5. Resume vs Job Description Similarity
+
+Created:
+
+```text
+src/document_similarity.py
+```
+
+Purpose:
+
+Compare:
+
+```text
+Entire Resume
+        VS
+Entire Job Description
+```
+
+using embeddings.
+
+Output:
+
+```text
+Semantic Relevance Score
+```
+
+This captures information that may not appear in extracted skills.
+
+---
+
+### 6. AI Scoring Engine
+
+Created:
+
+```text
+src/ai_scorer.py
+```
+
+Final score calculation:
+
+```text
+70% Skill Match Score
++
+30% Semantic Similarity Score
+```
+
+Formula:
+
+```python
+final_score =
+(skill_score × 0.7)
++
+(semantic_score × 0.3)
+```
+
+Outputs:
+
+* Final AI Score
+* Skill Match Score
+* Semantic Score
+* Matched Skills
+* Missing Skills
+
+---
+
+### 7. Web Application Integration
+
+Integrated AI scoring directly into:
+
+```text
+main.py
+```
+
+The web application now uses:
+
+```text
+Resume
+   ↓
+Sentence Transformer
+   ↓
+Embeddings
+   ↓
+Cosine Similarity
+   ↓
+AI Score
+```
+
+instead of traditional keyword matching.
+
+---
+
+### 8. Enhanced Results Dashboard
+
+Results page now displays:
+
+```text
+AI Resume Score
+
+Skill Match Score
+
+Semantic Score
+
+Matched Skills
+
+Missing Skills
+
+Recommendations
+```
+
+This provides users with more detailed and explainable analysis.
+
+---
+
+## Architecture
+
+```text
+Resume
+   ↓
+Resume Parser
+   ↓
+Skill Extraction
+   ↓
+Sentence Transformer
+   ↓
+Embeddings
+   ↓
+Cosine Similarity
+   ↓
+Hybrid Matching
+   ↓
+AI Score Engine
+   ↓
+Recommendations
+   ↓
+Results Dashboard
+```
+
+---
+
+## Technologies Used
+
+* Python
+* FastAPI
+* Jinja2
+* HTML
+* CSS
+* PyTorch
+* Sentence Transformers
+* Hugging Face Models
+* Cosine Similarity
+* NLP Embeddings
+
+---
+
