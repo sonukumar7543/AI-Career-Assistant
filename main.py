@@ -16,6 +16,9 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from src.ai_scorer import calculate_ai_score
 
+from src.explainable_job_recommender import recommend_jobs_explainable
+
+
 app = FastAPI(
     title="AI Career Assistant",
     version="1.0.0"
@@ -123,6 +126,11 @@ async def analyze_resume(
     recommendations = recommend_skills(
         ai_result["missing_skills"]
     )
+    job_recommendations = (
+        recommend_jobs_explainable(
+            resume["skills"]
+        )
+    )
 
     score = ai_result["final_score"]
 
@@ -146,6 +154,7 @@ async def analyze_resume(
             "score_class": score_class,
             "matched_skills": ai_result["matched_skills"],
             "missing_skills": ai_result["missing_skills"],
+            "job_recommendations":job_recommendations,
             "recommendations": recommendations
         }
     )

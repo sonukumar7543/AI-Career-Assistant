@@ -578,3 +578,203 @@ Results Dashboard
 
 ---
 
+# Week 7 - AI Career Recommendation Engine
+
+## Overview
+
+Week 7 transformed the AI Career Assistant from a resume scoring system into a true career guidance platform.
+
+In previous weeks, the application could analyze resumes, calculate AI-powered scores, and identify skill gaps. In Week 7, we introduced a Career Recommendation Engine that recommends suitable career paths based on a user's skills and provides explanations for every recommendation.
+
+The system now not only answers:
+
+"How good is my resume?"
+
+but also:
+
+"What careers are best suited for my profile?"
+
+and
+
+"Why are those careers recommended?"
+
+---
+
+## Objectives
+
+- Build a career recommendation engine
+- Create a career knowledge base
+- Recommend suitable jobs based on resume skills
+- Implement semantic job matching using NLP
+- Build explainable AI recommendations
+- Integrate career recommendations into the web application
+
+---
+
+## Features Implemented
+
+### 1. Career Knowledge Base
+
+Created:
+
+src/job_database.py
+
+This file stores career roles and their required skills.
+
+Example:
+
+```python
+"Machine Learning Engineer": [
+    "Python",
+    "Machine Learning",
+    "TensorFlow",
+    "PyTorch"
+]
+```
+
+The job database acts as the foundation of the recommendation engine.
+
+---
+
+### 2. Rule-Based Job Recommendation Engine
+
+Created:
+
+src/job_recommender.py
+
+The system:
+
+1. Reads resume skills
+2. Compares them with job requirements
+3. Calculates a match percentage
+4. Ranks jobs by score
+
+Example:
+
+```text
+Resume Skills:
+Python
+Machine Learning
+TensorFlow
+NLP
+
+Recommended Jobs:
+
+Machine Learning Engineer - 75%
+AI Engineer - 75%
+Data Scientist - 50%
+```
+
+---
+
+### 3. Semantic Job Recommendation Engine
+
+Created:
+
+src/semantic_job_recommender.py
+
+This module uses:
+
+- Sentence Transformers
+- Text Embeddings
+- Cosine Similarity
+
+instead of exact keyword matching.
+
+Example:
+
+```text
+Resume:
+Deep Learning
+
+Job Requirement:
+Neural Networks
+```
+
+Traditional matching:
+
+```text
+No Match
+```
+
+Semantic matching:
+
+```text
+Match Found
+```
+
+This significantly improves recommendation accuracy.
+
+---
+
+### 4. Explainable AI Recommendations
+
+Created:
+
+src/explainable_job_recommender.py
+
+This feature explains:
+
+- Why a job is recommended
+- Which skills matched
+- Which skills are missing
+
+Example:
+
+```text
+AI Engineer
+
+Match Score: 75%
+
+Matched Skills:
+✓ Python
+✓ Machine Learning
+✓ Deep Learning
+
+Missing Skills:
+✗ TensorFlow
+```
+
+### 5. Web Application Integration
+
+Integrated the recommendation engine into:
+
+main.py
+
+and
+
+templates/result.html
+
+Users now receive:
+
+- AI Resume Score
+- Skill Match Score
+- Semantic Score
+- Missing Skills
+- Learning Recommendations
+- Recommended Careers
+- Career Explanations
+
+all from a single resume upload.
+
+---
+
+
+---
+
+## Technologies Used
+
+- Python
+- FastAPI
+- Jinja2
+- HTML
+- CSS
+- Sentence Transformers
+- PyTorch
+- Hugging Face Models
+- Cosine Similarity
+- NLP Embeddings
+
+---
+
+
