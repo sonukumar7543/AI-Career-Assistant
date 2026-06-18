@@ -18,6 +18,8 @@ from src.ai_scorer import calculate_ai_score
 
 from src.explainable_job_recommender import recommend_jobs_explainable
 
+from src.career_predictor import predict_career
+
 
 app = FastAPI(
     title="AI Career Assistant",
@@ -111,6 +113,9 @@ async def analyze_resume(
     resume = build_resume(
         file_path
     )
+    predicted_career = predict_career(
+        resume["skills"]
+    )
 
     job = parse_job_text(
         job_description
@@ -155,6 +160,7 @@ async def analyze_resume(
             "matched_skills": ai_result["matched_skills"],
             "missing_skills": ai_result["missing_skills"],
             "job_recommendations":job_recommendations,
+            "predicted_career":predicted_career,
             "recommendations": recommendations
         }
     )
