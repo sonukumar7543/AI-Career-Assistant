@@ -1,5 +1,4 @@
-from src.career_predictor import predict_career
-
+from src.career_predictor import predict_top_careers
 
 skills = [
     "Python",
@@ -8,8 +7,6 @@ skills = [
     "NLP"
 ]
 
-career = predict_career(
-    skills
+print(
+    predict_top_careers(skills)
 )
-
-print(career)

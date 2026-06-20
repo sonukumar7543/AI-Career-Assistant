@@ -16,13 +16,29 @@
         <h2>Candidate: {{ candidate }}</h2>
         <div class="card">
 
+            <h2>Predicted Career</h2>
+
+            <p>🎯 {{ predicted_career }}</p>
+
+        </div>
+
+        <div class="card">
+
             <h2>
-                Predicted Career
+                Other Suitable Careers
             </h2>
 
-            <p>
-                {{ predicted_career }}
-            </p>
+            <ul>
+
+                {% for career in other_careers %}
+
+                <li>
+                    {{ career }}
+                </li>
+
+                {% endfor %}
+
+            </ul>
 
         </div>
         <div class="score-card {{ score_class }}">
@@ -63,66 +79,6 @@
             </li>
             {% endfor %}
         </ul>
-
-        <h2>Recommendations</h2>
-
-        {% for skill, details in recommendations.items() %}
-
-        <div class="recommendation-card">
-
-            <h3>{{ skill }}</h3>
-
-            <p>
-                Difficulty:
-                {{ details.difficulty }}
-            </p>
-
-            <p>
-                Resource:
-                {{ details.resource }}
-            </p>
-
-        </div>
-        
-        {% endfor %}
-        <hr>
-
-        <h2>Recommended Careers</h2>
-
-        {% for job in job_recommendations %}
-
-        <div class="recommendation-card">
-
-            <h3>{{ job.job }}</h3>
-
-            <p> Match Score:{{ job.score }}%</p>
-
-            <p><b>Matched Skills:</b></p>
-
-            <ul>
-
-            {% for skill in job.matched_skills %}
-
-                <li class="matched-skill">✓ {{ skill }}</li>
-            {% endfor %}
-
-            </ul>
-
-            <p> <b>Missing Skills:</b></p>
-
-            <ul>
-
-            {% for skill in job.missing_skills %}
-
-                <li class="missing-skill">✗ {{ skill }}</li>
-
-            {% endfor %}
-
-            </ul>
-
-        </div>
-
-        {% endfor %}
         <a href="/web" class="back-button">
             Analyze Another Resume
         </a>
