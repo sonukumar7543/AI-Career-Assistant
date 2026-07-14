@@ -1,5 +1,4 @@
 import joblib
-import numpy as np
 
 model = joblib.load("models/career_model.pkl")
 

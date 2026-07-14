@@ -2,7 +2,6 @@ import os
 
 from openai import OpenAI
 from dotenv import load_dotenv
-from src.chat_context import get_context
 
 from src.chat_prompt import SYSTEM_PROMPT
 from src.chat_memory import (
