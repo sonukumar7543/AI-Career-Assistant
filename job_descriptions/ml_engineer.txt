@@ -1,9 +1,40 @@
-Machine Learning Engineer
+Job Title: Data Scientist
+
+Location: Bengaluru, India
+
+Job Description:
+
+We are looking for a Data Scientist to join our team. The ideal candidate should have strong analytical and problem-solving skills and experience working with machine learning models and large datasets.
+
+Responsibilities:
+• Develop and deploy machine learning models.
+• Analyze structured and unstructured data.
+• Build predictive analytics solutions.
+• Collaborate with software engineers and business teams.
+• Create reports and data visualizations.
 
 Required Skills:
+• Python
+• SQL
+• Machine Learning
+• Pandas
+• NumPy
+• Scikit-learn
+• Data Analysis
+• Statistics
+• Data Visualization
 
-Python
-SQL
-Machine Learning
-TensorFlow
-PyTorch
+Preferred Skills:
+• TensorFlow
+• PyTorch
+• Deep Learning
+• NLP
+• AWS
+
+Qualifications:
+• Bachelor's or Master's degree in Computer Science, Data Science, Statistics, or related field.
+• Strong understanding of machine learning algorithms.
+• Excellent communication skills.
+
+Experience:
+• 0–2 years of experience in Data Science or Machine Learning.

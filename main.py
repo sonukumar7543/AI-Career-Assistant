@@ -19,6 +19,9 @@ from src.ai_scorer import calculate_ai_score
 from src.explainable_job_recommender import recommend_jobs_explainable
 
 from src.career_predictor import predict_top_careers
+from src.chatbot import ask_bot
+from src.chat_context import get_context, update_context
+from src.chat_memory import initialize_resume_context
 
 
 app = FastAPI(
@@ -137,6 +140,38 @@ async def analyze_resume(
     )
 
     predicted_career = top_careers[0]
+    update_context({
+
+        "name": resume.get("name", ""),
+
+        "email": resume.get("email", ""),
+
+        "phone": resume.get("phone", ""),
+
+        "skills": resume.get("skills", []),
+
+        "education": resume.get("education", []),
+
+        "projects": resume.get("project", []),
+
+        "experience": resume.get("experience", []),
+
+        "resume_score": ai_result["final_score"],
+
+        "skill_score": ai_result["skill_score"],
+
+        "semantic_score": ai_result["semantic_score"],
+
+        "matched_skills": ai_result["matched_skills"],
+
+        "missing_skills": ai_result["missing_skills"],
+
+        "predicted_career": predicted_career,
+
+        "recommended_jobs": job_recommendations
+
+    })
+    initialize_resume_context(get_context())
 
     other_careers = top_careers[1:]
 
@@ -169,6 +204,19 @@ async def analyze_resume(
         }
     )
     
+from pydantic import BaseModel
 
+class ChatRequest(BaseModel):
+    message: str
+
+
+@app.post("/chat")
+async def chat(request: ChatRequest):
+
+    answer = ask_bot(request.message)
+
+    return {
+        "reply": answer
+    }
 
 
